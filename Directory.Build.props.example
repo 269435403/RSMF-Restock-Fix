@@ -1,0 +1,10 @@
+<Project>
+  <!--
+    Copy this file to Directory.Build.props (gitignored) and set local paths.
+  -->
+  <PropertyGroup>
+    <RimWorldDir>C:\Path\To\RimWorld</RimWorldDir>
+    <HarmonyDll>C:\Path\To\Steam\steamapps\workshop\content\294100\2009463077\Current\Assemblies\0Harmony.dll</HarmonyDll>
+    <SimManagementLibDll>C:\Path\To\RimSimManagementFramework\Assemblies\SimManagementLib.dll</SimManagementLibDll>
+  </PropertyGroup>
+</Project>

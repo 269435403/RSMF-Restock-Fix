@@ -1,0 +1,23 @@
+# Build output
+[Bb]in/
+[Oo]bj/
+*.pdb
+*.mdb
+*.cache
+
+# Local MSBuild overrides (machine-specific paths)
+Directory.Build.props
+*.user
+*.suo
+.vs/
+.idea/
+
+# OS / editor noise
+Thumbs.db
+Desktop.ini
+.DS_Store
+*~
+
+# Keep shipped runtime assembly under Assemblies/
+!Assemblies/
+!Assemblies/**

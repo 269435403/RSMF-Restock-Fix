@@ -1,0 +1,18 @@
+* text=auto eol=lf
+
+*.cs text eol=lf
+*.xml text eol=lf
+*.md text eol=lf
+*.csproj text eol=lf
+*.props text eol=lf
+*.gitignore text eol=lf
+*.gitattributes text eol=lf
+*.sln text eol=lf
+
+*.dll binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.psd binary

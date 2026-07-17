@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+  <packageId>chezhou.rsmf.inventorygoodsfilter</packageId>
+  <name>RSMF Restock Fix</name>
+  <author>chezhou</author>
+  <supportedVersions>
+    <li>1.6</li>
+  </supportedVersions>
+  <description>RimSimManagementFramework restock reliability and goods-manager inventory filter.
+
+- More reliable auto-restock (threshold, reservation, queue self-heal, silent wake)
+- Inventory filter and warehouse stock column in the goods manager
+- Optional Adaptive Storage Framework compatibility
+- Colony hauling mechs can participate in restock
+
+Does not modify original RSMF files. Restock fix can be disabled in mod settings.</description>
+  <modDependencies>
+    <li>
+      <packageId>brrainz.harmony</packageId>
+      <displayName>Harmony</displayName>
+      <steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
+    </li>
+    <li>
+      <packageId>chezhou.Framework.RimSimManagementFramework</packageId>
+      <displayName>RimSimManagementFramework</displayName>
+    </li>
+  </modDependencies>
+  <loadAfter>
+    <li>brrainz.harmony</li>
+    <li>chezhou.Framework.RimSimManagementFramework</li>
+    <li>adaptive.storage.framework</li>
+  </loadAfter>
+</ModMetaData>
