@@ -16,8 +16,6 @@ RimWorld 1.6 companion mod for **RimSimManagementFramework** that hardens automa
 - Optional [Adaptive Storage Framework](https://steamcommunity.com/workshop/filedetails/?id=3033905855) compatibility
 - Colony hauling mechs can participate in restock when assigned the shop Restocker role
 
-This mod does **not** edit original RSMF files. Reliable restock can be turned off in mod settings without disabling the inventory filter.
-
 ## Screenshots
 
 ### Goods manager
