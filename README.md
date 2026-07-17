@@ -66,8 +66,6 @@ Output assembly: `Assemblies/RSMFInventoryGoodsFilter.dll`
 ## Compatibility
 
 - Safe to add mid-save
-- Designed as a non-invasive Harmony companion; falls back when RSMF members are missing
-- Does not replace RSMF; load after the framework
 
 ## Changelog
 
