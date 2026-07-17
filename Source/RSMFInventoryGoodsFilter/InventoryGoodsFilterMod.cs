@@ -13,7 +13,7 @@ namespace RSMFInventoryGoodsFilter
             {
                 GoodsManagerPatches.ValidateTargets();
                 RestockPatchTargets.ValidateAndLog();
-                new Harmony("yyyyy.rsmf.inventorygoodsfilter").PatchAll();
+                new Harmony("yyyyy.rsmf.restockfix").PatchAll();
             }
             catch (System.Exception exception)
             {

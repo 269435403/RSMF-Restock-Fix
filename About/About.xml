@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
-  <packageId>yyyyy.rsmf.inventorygoodsfilter</packageId>
+  <packageId>yyyyy.rsmf.restockfix</packageId>
   <name>RSMF Restock Fix</name>
   <author>yyyyy</author>
   <supportedVersions>

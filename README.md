@@ -5,7 +5,7 @@ RimWorld 1.6 companion mod for **RimSimManagementFramework** that hardens automa
 | | |
 |---|---|
 | **Author** | yyyyy |
-| **packageId** | `yyyyy.rsmf.inventorygoodsfilter` |
+| **packageId** | `yyyyy.rsmf.restockfix` |
 | **Game version** | 1.6 |
 | **License** | MIT |
 
