@@ -1,22 +1,8 @@
-# RSMF Restock Fix
-
-RimWorld 1.6 companion mod for **RimSimManagementFramework** that improves automatic restocking and adds warehouse inventory visibility to the goods manager.
-
 ## 创意工坊描述
 
 - 修改了边缘模拟经营框架模组的补货逻辑，现在应该不会出现不补货的情况了（或者说现在殖民者补货补得十分疯狂）。
 - 使货架菜单显示仓库内的物品和数量，不用再来回翻找自己家里有什么东西了。
 - 现在搬运机可以进行补货了。请在“经商管理”页面 → “店员” → “店员配置” → “岗位列表” → “补货”页面中，将搬运机加入补货岗位。
-
-[h2]截图[/h2]
-
-[b]仓库物品可视[/b]
-[img]https://raw.githubusercontent.com/269435403/RSMF-Restock-Fix/main/Preview/goods-manager.jpg[/img]
-
-[b]搬运机补货[/b]
-[img]https://raw.githubusercontent.com/269435403/RSMF-Restock-Fix/main/Preview/restock-mech.jpg[/img]
-
-[url=https://github.com/269435403/RSMF-Restock-Fix]GitHub[/url]
 
 模组未经太多测试，欢迎进行反馈。
 
@@ -58,20 +44,6 @@ RimSimManagementFramework
 Adaptive Storage Framework   (optional)
 RSMF Restock Fix
 ```
-
-## Build from source
-
-Requirements: .NET SDK with .NET Framework 4.8.1 targeting pack, RimWorld 1.6, Harmony, and RSMF assemblies.
-
-1. Copy `Directory.Build.props.example` to `Directory.Build.props`.
-2. Point `RimWorldDir`, `HarmonyDll`, and `SimManagementLibDll` at your local installs.
-3. Build:
-
-```powershell
-dotnet build "Source/RSMFInventoryGoodsFilter/RSMFInventoryGoodsFilter.csproj" -c Release
-```
-
-Output assembly: `Assemblies/RSMFInventoryGoodsFilter.dll`
 
 ## Compatibility
 
