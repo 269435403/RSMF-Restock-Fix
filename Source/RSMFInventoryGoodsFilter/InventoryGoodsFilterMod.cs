@@ -1,5 +1,5 @@
 using HarmonyLib;
-using RSMFInventoryGoodsFilter.Restock;
+using RSMFInventoryGoodsFilter.Patches;
 using Verse;
 
 namespace RSMFInventoryGoodsFilter
@@ -12,7 +12,7 @@ namespace RSMFInventoryGoodsFilter
             try
             {
                 GoodsManagerPatches.ValidateTargets();
-                RestockPatchTargets.ValidateAndLog();
+                MechRestockPatchTargets.ValidateAndLog();
                 new Harmony("yyyyy.rsmf.restockfix").PatchAll();
             }
             catch (System.Exception exception)

@@ -1,8 +1,14 @@
+# RSMF 商品管理增强 (Goods Manager Plus)
+
+RimWorld 1.6 companion mod for **RimSimManagementFramework** that adds warehouse inventory visibility to the goods manager and lets colony hauling mechs restock.
+
+> 前身为 "RSMF Restock Fix"。自 2026-07 主模组更新起，补货修复已由框架原生实现，本模组于 2026-07-19 移除全部补货修复补丁并改名转型。packageId `yyyyy.rsmf.restockfix` 不变。
+
 ## 描述
 
-- 修改了边缘模拟经营框架模组的补货逻辑，现在应该不会出现不补货的情况了（或者说现在殖民者补货补得十分疯狂）。
 - 使货架菜单显示仓库内的物品和数量，不用再来回翻找自己家里有什么东西了。
 - 现在搬运机可以进行补货了。请在“经商管理”页面 → “店员” → “店员配置” → “岗位列表” → “补货”页面中，将搬运机加入补货岗位。
+- 补货修复已由边缘模拟经营框架原生实现（2026-07 更新），本模组不再包含补货修复补丁。
 
 模组未经太多测试，欢迎进行反馈。
 
@@ -19,10 +25,10 @@
 
 ## Features
 
-- More reliable auto-restock with threshold checks, reservation tracking, queue self-healing, and silent background wake.
-- Inventory filter and warehouse stock column in the goods manager.
+- Inventory filter and warehouse stock column in the goods manager, with capacity-aware batch select/clear.
+- Colony hauling mechs (e.g. Lifter) can participate in restock when assigned the shop Restocker role.
 - Optional [Adaptive Storage Framework](https://steamcommunity.com/workshop/filedetails/?id=3033905855) compatibility.
-- Colony hauling mechs can participate in restock when assigned the shop Restocker role.
+- Does not modify original RSMF files.
 
 ## Requirements
 
@@ -34,7 +40,7 @@
 
 1. Download this repository or a release archive.
 2. Place the folder under `RimWorld/Mods/`.
-3. Enable **RSMF Restock Fix** in the mod list.
+3. Enable **RSMF 商品管理增强 (Goods Manager Plus)** in the mod list.
 
 ## Load order
 
@@ -42,7 +48,7 @@
 Harmony
 RimSimManagementFramework
 Adaptive Storage Framework   (optional)
-RSMF Restock Fix
+RSMF 商品管理增强 (Goods Manager Plus)
 ```
 
 ## Compatibility

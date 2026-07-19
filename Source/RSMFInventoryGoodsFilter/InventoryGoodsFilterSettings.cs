@@ -6,37 +6,12 @@ namespace RSMFInventoryGoodsFilter
     public class InventoryGoodsFilterSettings : ModSettings
     {
         public bool LooseInventoryRecognition;
-
-        // 玩家可见：可靠补货总开关 + 详细日志。子层字段仅存档兼容，UI 不再绘制。
-        public bool EnableRestockInvariantFix = true;
-        public bool EnableThresholdSemanticFix = true;
-        public bool EnableReservationIdempotencyFix = true;
-        public bool EnableQueueSelfHealFix = true;
-        public bool EnableRestockUiAssist = true;
-        public bool EnableRestockWatchdog = true;
-        public bool VerboseRestockLog;
+        public bool EnableMechRestock = true;
 
         public override void ExposeData()
         {
             Scribe_Values.Look(ref LooseInventoryRecognition, "looseInventoryRecognition", false);
-
-            Scribe_Values.Look(ref EnableRestockInvariantFix, "enableRestockInvariantFix", true);
-            Scribe_Values.Look(ref EnableThresholdSemanticFix, "enableThresholdSemanticFix", true);
-            Scribe_Values.Look(ref EnableReservationIdempotencyFix, "enableReservationIdempotencyFix", true);
-            Scribe_Values.Look(ref EnableQueueSelfHealFix, "enableQueueSelfHealFix", true);
-            Scribe_Values.Look(ref EnableRestockUiAssist, "enableRestockUiAssist", true);
-            Scribe_Values.Look(ref EnableRestockWatchdog, "enableRestockWatchdog", true);
-            Scribe_Values.Look(ref VerboseRestockLog, "verboseRestockLog", false);
-
-            // 收官：总开关开时一次性纠正旧存档里关掉的子层，避免半残。
-            if (Scribe.mode == LoadSaveMode.PostLoadInit && EnableRestockInvariantFix)
-            {
-                EnableThresholdSemanticFix = true;
-                EnableReservationIdempotencyFix = true;
-                EnableQueueSelfHealFix = true;
-                EnableRestockUiAssist = true;
-                EnableRestockWatchdog = true;
-            }
+            Scribe_Values.Look(ref EnableMechRestock, "enableMechRestock", true);
         }
     }
 
@@ -72,17 +47,12 @@ namespace RSMFInventoryGoodsFilter
             listing.Label("RSMF.InventoryGoodsFilter.Settings.StrictModeNote".Translate());
 
             listing.GapLine();
-            listing.Label("RSMF.InventoryGoodsFilter.Settings.RestockSection".Translate());
+            listing.Label("RSMF.InventoryGoodsFilter.Settings.MechSection".Translate());
 
             listing.CheckboxLabeled(
-                "RSMF.InventoryGoodsFilter.Settings.EnableRestockInvariantFix".Translate(),
-                ref Settings.EnableRestockInvariantFix,
-                "RSMF.InventoryGoodsFilter.Settings.EnableRestockInvariantFixTip".Translate());
-
-            listing.CheckboxLabeled(
-                "RSMF.InventoryGoodsFilter.Settings.VerboseRestockLog".Translate(),
-                ref Settings.VerboseRestockLog,
-                "RSMF.InventoryGoodsFilter.Settings.VerboseRestockLogTip".Translate());
+                "RSMF.InventoryGoodsFilter.Settings.EnableMechRestock".Translate(),
+                ref Settings.EnableMechRestock,
+                "RSMF.InventoryGoodsFilter.Settings.EnableMechRestockTip".Translate());
 
             listing.End();
             base.DoSettingsWindowContents(inRect);

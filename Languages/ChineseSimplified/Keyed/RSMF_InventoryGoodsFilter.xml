@@ -11,7 +11,7 @@
   <RSMF.InventoryGoodsFilter.RefreshDone>库存快照已刷新。</RSMF.InventoryGoodsFilter.RefreshDone>
   <RSMF.InventoryGoodsFilter.Summary>库存商品 {inventory} / 已注册 {registered}</RSMF.InventoryGoodsFilter.Summary>
   <RSMF.InventoryGoodsFilter.SummaryTip>库存候选种类数 / 当前分类已注册总数。摘要不受搜索词影响；库存候选含地图库存与当前草稿已启用商品。</RSMF.InventoryGoodsFilter.SummaryTip>
-  <RSMF.InventoryGoodsFilter.SettingsCategory>RSMF 补货修复</RSMF.InventoryGoodsFilter.SettingsCategory>
+  <RSMF.InventoryGoodsFilter.SettingsCategory>RSMF 商品管理增强 (Goods Manager Plus)</RSMF.InventoryGoodsFilter.SettingsCategory>
   <RSMF.InventoryGoodsFilter.Settings.LooseMode>宽松库存识别</RSMF.InventoryGoodsFilter.Settings.LooseMode>
   <RSMF.InventoryGoodsFilter.Settings.LooseModeTip>开启后统计当前地图上所有玩家可用、未禁用的已生成物品，不要求位于有效仓储位置。仍排除其他地图、角色装备/穿戴/背包中的未生成物品，以及框架货柜虚拟库存。</RSMF.InventoryGoodsFilter.Settings.LooseModeTip>
   <RSMF.InventoryGoodsFilter.Settings.StrictModeNote>关闭时使用严格模式：只统计有效玩家仓储位置中的物品（库存区、货架等）。</RSMF.InventoryGoodsFilter.Settings.StrictModeNote>
@@ -20,63 +20,8 @@
   <RSMF.InventoryGoodsFilter.Error.MissingTargets>无法定位所需框架成员：{targets}。对应增强已安全禁用，框架原商品窗口仍可使用。</RSMF.InventoryGoodsFilter.Error.MissingTargets>
   <RSMF.InventoryGoodsFilter.Error.RuntimeFallback>执行增强时发生错误：{error}。已回退到框架原行为；此错误本次运行仅记录一次。</RSMF.InventoryGoodsFilter.Error.RuntimeFallback>
   <RSMF.InventoryGoodsFilter.Error.PatchAllFailed>应用 Harmony 补丁时发生错误：{error}。附属模组增强已停止，框架原窗口仍可使用。</RSMF.InventoryGoodsFilter.Error.PatchAllFailed>
-
-  <!-- 玩家设置：可靠补货 -->
-  <RSMF.InventoryGoodsFilter.Settings.RestockSection>可靠自动补货</RSMF.InventoryGoodsFilter.Settings.RestockSection>
-  <RSMF.InventoryGoodsFilter.Settings.EnableRestockInvariantFix>启用可靠自动补货</RSMF.InventoryGoodsFilter.Settings.EnableRestockInvariantFix>
-  <RSMF.InventoryGoodsFilter.Settings.EnableRestockInvariantFixTip>开启后使用更稳的补货语义、幂等、保存收敛与后台静默自愈。关闭则回退框架原补货；库存筛选不受影响。</RSMF.InventoryGoodsFilter.Settings.EnableRestockInvariantFixTip>
-  <RSMF.InventoryGoodsFilter.Settings.VerboseRestockLog>详细补货日志</RSMF.InventoryGoodsFilter.Settings.VerboseRestockLog>
-  <RSMF.InventoryGoodsFilter.Settings.VerboseRestockLogTip>输出补货调试日志（含自愈摘要）。默认关闭，避免刷屏。</RSMF.InventoryGoodsFilter.Settings.VerboseRestockLogTip>
-  <RSMF.InventoryGoodsFilter.Settings.RestockStageNote>可靠自动补货默认开启。原版搬运机等仅有搬运工种的机械体，分配到商店「补货」岗位后可参与补货。</RSMF.InventoryGoodsFilter.Settings.RestockStageNote>
-
-  <!-- 保留旧键以免外部引用/日志缺译；玩家设置页不再展示子开关 -->
-  <RSMF.InventoryGoodsFilter.Settings.EnableThresholdSemanticFix>阈值语义</RSMF.InventoryGoodsFilter.Settings.EnableThresholdSemanticFix>
-  <RSMF.InventoryGoodsFilter.Settings.EnableThresholdSemanticFixTip>内部增强层（随总开关）。</RSMF.InventoryGoodsFilter.Settings.EnableThresholdSemanticFixTip>
-  <RSMF.InventoryGoodsFilter.Settings.EnableReservationIdempotencyFix>预约幂等</RSMF.InventoryGoodsFilter.Settings.EnableReservationIdempotencyFix>
-  <RSMF.InventoryGoodsFilter.Settings.EnableReservationIdempotencyFixTip>内部增强层（随总开关）。</RSMF.InventoryGoodsFilter.Settings.EnableReservationIdempotencyFixTip>
-  <RSMF.InventoryGoodsFilter.Settings.EnableQueueSelfHealFix>队列自愈</RSMF.InventoryGoodsFilter.Settings.EnableQueueSelfHealFix>
-  <RSMF.InventoryGoodsFilter.Settings.EnableQueueSelfHealFixTip>内部增强层（随总开关）。</RSMF.InventoryGoodsFilter.Settings.EnableQueueSelfHealFixTip>
-  <RSMF.InventoryGoodsFilter.Settings.EnableRestockUiAssist>补货 UI 辅助</RSMF.InventoryGoodsFilter.Settings.EnableRestockUiAssist>
-  <RSMF.InventoryGoodsFilter.Settings.EnableRestockUiAssistTip>内部增强层（随总开关）。</RSMF.InventoryGoodsFilter.Settings.EnableRestockUiAssistTip>
-  <RSMF.InventoryGoodsFilter.Settings.EnableRestockWatchdog>后台补货自愈</RSMF.InventoryGoodsFilter.Settings.EnableRestockWatchdog>
-  <RSMF.InventoryGoodsFilter.Settings.EnableRestockWatchdogTip>内部增强层（随总开关）。</RSMF.InventoryGoodsFilter.Settings.EnableRestockWatchdogTip>
-
-  <RSMF.InventoryGoodsFilter.Restock.EnhancementsApplied>可靠自动补货已启用。</RSMF.InventoryGoodsFilter.Restock.EnhancementsApplied>
-  <RSMF.InventoryGoodsFilter.Restock.R5WatchdogApplied>后台补货自愈已启用（静默 soft 唤醒，默认不弹窗）。</RSMF.InventoryGoodsFilter.Restock.R5WatchdogApplied>
-  <RSMF.InventoryGoodsFilter.Restock.ProbeOk>补货目标成员探测完成：全部命中。</RSMF.InventoryGoodsFilter.Restock.ProbeOk>
-  <RSMF.InventoryGoodsFilter.Restock.ProbeMissing>补货目标成员缺失（对应功能将安全降级）：{targets}</RSMF.InventoryGoodsFilter.Restock.ProbeMissing>
-  <RSMF.InventoryGoodsFilter.Restock.R1Applied>补货语义补丁已应用（阈值始终补满 + CountNeeded 严格小于）。</RSMF.InventoryGoodsFilter.Restock.R1Applied>
-  <RSMF.InventoryGoodsFilter.Restock.R2ReservationApplied>预约幂等补丁已应用（Job 级 token + Cancel 同步）。</RSMF.InventoryGoodsFilter.Restock.R2ReservationApplied>
-  <RSMF.InventoryGoodsFilter.Restock.R2QueueApplied>队列自愈补丁已应用（孤儿标脏 + 主动派工事务化）。</RSMF.InventoryGoodsFilter.Restock.R2QueueApplied>
-  <RSMF.InventoryGoodsFilter.Restock.R3SettingsApplied>配置收敛补丁已应用（ApplySettings 后 Reconcile + 标脏）。</RSMF.InventoryGoodsFilter.Restock.R3SettingsApplied>
-  <RSMF.InventoryGoodsFilter.Restock.R3UiApplied>UI 阈值辅助补丁已应用（显示/存储与 Effective 解耦 + 拖动跟随）。</RSMF.InventoryGoodsFilter.Restock.R3UiApplied>
-  <RSMF.InventoryGoodsFilter.Restock.ThresholdTip>0 = 始终补满到目标。\n大于 0 = 库存低于此值才补。\n改目标时：始终补满会自动跟；自定义阈值尽量保留。</RSMF.InventoryGoodsFilter.Restock.ThresholdTip>
-  <RSMF.InventoryGoodsFilter.Restock.DiagnosticStub>补货诊断：货柜 {storage}。</RSMF.InventoryGoodsFilter.Restock.DiagnosticStub>
-  <RSMF.InventoryGoodsFilter.Restock.R4UiApplied>补货状态/诊断 UI 已应用。</RSMF.InventoryGoodsFilter.Restock.R4UiApplied>
-  <RSMF.InventoryGoodsFilter.Restock.JobKeyFallback>补货 Job 的 loadID 为 0，已回退到对象身份哈希作为 token key（仅记录一次）。</RSMF.InventoryGoodsFilter.Restock.JobKeyFallback>
-  <RSMF.InventoryGoodsFilter.Restock.CopyDiagnostics>复制补货诊断</RSMF.InventoryGoodsFilter.Restock.CopyDiagnostics>
-  <RSMF.InventoryGoodsFilter.Restock.CopyDiagnosticsTip>把当前货柜补货状态复制到剪贴板，方便反馈问题。只读，不会改配置。（开发者模式）</RSMF.InventoryGoodsFilter.Restock.CopyDiagnosticsTip>
-  <RSMF.InventoryGoodsFilter.Restock.CopyDiagnosticsDone>补货诊断已复制到剪贴板。</RSMF.InventoryGoodsFilter.Restock.CopyDiagnosticsDone>
-  <RSMF.InventoryGoodsFilter.Restock.CopyDiagnosticsEmpty>没有可复制的诊断内容。</RSMF.InventoryGoodsFilter.Restock.CopyDiagnosticsEmpty>
-  <RSMF.InventoryGoodsFilter.Restock.RepairToSettings>重整补货</RSMF.InventoryGoodsFilter.Restock.RepairToSettings>
-  <RSMF.InventoryGoodsFilter.Restock.RepairToSettingsTip>按当前设定重新整理补货调度。不会刷物，也不会改目标/阈值。重整后会重新派工，不等于立刻到货。（开发者模式）</RSMF.InventoryGoodsFilter.Restock.RepairToSettingsTip>
-  <RSMF.InventoryGoodsFilter.Restock.RepairDone>已重整补货调度（会重新派工，不是立刻到货）。</RSMF.InventoryGoodsFilter.Restock.RepairDone>
-  <RSMF.InventoryGoodsFilter.Restock.RepairFailed>重整补货失败，请检查模组设置。</RSMF.InventoryGoodsFilter.Restock.RepairFailed>
-  <RSMF.InventoryGoodsFilter.Restock.RepairDisabled>可靠自动补货已关闭，无法重整。</RSMF.InventoryGoodsFilter.Restock.RepairDisabled>
-  <RSMF.InventoryGoodsFilter.Restock.State.Disabled>未上架</RSMF.InventoryGoodsFilter.Restock.State.Disabled>
-  <RSMF.InventoryGoodsFilter.Restock.State.TargetZero>目标为 0</RSMF.InventoryGoodsFilter.Restock.State.TargetZero>
-  <RSMF.InventoryGoodsFilter.Restock.State.Satisfied>已符合设定</RSMF.InventoryGoodsFilter.Restock.State.Satisfied>
-  <RSMF.InventoryGoodsFilter.Restock.State.NotTriggered>未触发</RSMF.InventoryGoodsFilter.Restock.State.NotTriggered>
-  <RSMF.InventoryGoodsFilter.Restock.State.InProgress>补货中</RSMF.InventoryGoodsFilter.Restock.State.InProgress>
-  <RSMF.InventoryGoodsFilter.Restock.State.Queued>已入队</RSMF.InventoryGoodsFilter.Restock.State.Queued>
-  <RSMF.InventoryGoodsFilter.Restock.State.BlockedNoSupply>阻塞:无货源</RSMF.InventoryGoodsFilter.Restock.State.BlockedNoSupply>
-  <RSMF.InventoryGoodsFilter.Restock.State.BlockedNoStaff>阻塞:无员工</RSMF.InventoryGoodsFilter.Restock.State.BlockedNoStaff>
-  <RSMF.InventoryGoodsFilter.Restock.State.BlockedOther>阻塞</RSMF.InventoryGoodsFilter.Restock.State.BlockedOther>
-  <RSMF.InventoryGoodsFilter.Restock.State.BlockedWithReason>阻塞: {reason}</RSMF.InventoryGoodsFilter.Restock.State.BlockedWithReason>
-  <RSMF.InventoryGoodsFilter.Restock.State.Interrupted>中断:需重整</RSMF.InventoryGoodsFilter.Restock.State.Interrupted>
-  <RSMF.InventoryGoodsFilter.Restock.State.Unknown>未知</RSMF.InventoryGoodsFilter.Restock.State.Unknown>
-  <RSMF.InventoryGoodsFilter.Restock.IntentAlwaysFill>始终补满</RSMF.InventoryGoodsFilter.Restock.IntentAlwaysFill>
-  <RSMF.InventoryGoodsFilter.Restock.IntentCustom>自定义触发</RSMF.InventoryGoodsFilter.Restock.IntentCustom>
-  <RSMF.InventoryGoodsFilter.Restock.RowStatusShort>库存{S}/目标{T} · 触发{H} · 途中{P} · {status}</RSMF.InventoryGoodsFilter.Restock.RowStatusShort>
-  <RSMF.InventoryGoodsFilter.Restock.RowStatusTip>库存 {S} / 目标 {T}\n阈值 {rawH}（有效触发 {H}）\n途中 {P} · 还需 {need}\n状态：{status}\n意图：{intent}</RSMF.InventoryGoodsFilter.Restock.RowStatusTip>
+  <RSMF.GoodsManager.AutoTrimNotice>已按货柜容量上限自动裁剪 {trimmed} 件商品。</RSMF.GoodsManager.AutoTrimNotice>
+  <RSMF.InventoryGoodsFilter.Settings.MechSection>机械体补货</RSMF.InventoryGoodsFilter.Settings.MechSection>
+  <RSMF.InventoryGoodsFilter.Settings.EnableMechRestock>启用机械体补货</RSMF.InventoryGoodsFilter.Settings.EnableMechRestock>
+  <RSMF.InventoryGoodsFilter.Settings.EnableMechRestockTip>开启后，殖民地搬运机械体（如搬运机）可被分配到商店「补货」岗位并真正执行补货。关闭则恢复框架原行为。</RSMF.InventoryGoodsFilter.Settings.EnableMechRestockTip>
 </LanguageData>

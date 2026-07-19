@@ -1,6 +1,5 @@
 using HarmonyLib;
 using RimWorld;
-using RSMFInventoryGoodsFilter.Restock;
 using SimManagementLib.SimMapComp;
 using SimManagementLib.Tool;
 using System;
@@ -11,6 +10,45 @@ using Verse.AI;
 
 namespace RSMFInventoryGoodsFilter.Patches
 {
+    /// <summary>
+    /// 机械体补货补丁的反射探针（全部是主模组私有方法，字符串反射）。
+    /// 探针找不到 → 对应补丁 Prepare 返回 false → 静默降级，启动时 Warning 一次。
+    /// 主模组改名这些方法不会编译报错，只会静默失效，见启动日志。
+    /// </summary>
+    internal static class MechRestockPatchTargets
+    {
+        private const string LogPrefix = "[RSMF Inventory Goods Filter][Restock] ";
+
+        internal static readonly MethodInfo MechanicalStaffCanUseWorkType =
+            AccessTools.Method(typeof(ShopStaffUtility), "MechanicalStaffCanUseWorkType");
+        internal static readonly MethodInfo CanUseRestockWorkGiver =
+            AccessTools.Method(typeof(MapComponent_RestockTaskQueue), "CanUseRestockWorkGiver");
+        internal static readonly MethodInfo MechDispatcherIsIdleForShopDispatch =
+            AccessTools.Method(typeof(MapComponent_MechShopStaffDispatcher), "IsIdleForShopDispatch");
+        internal static readonly MethodInfo MechDispatcherShouldTryDispatch =
+            AccessTools.Method(typeof(MapComponent_MechShopStaffDispatcher), "ShouldTryDispatch");
+
+        internal static void ValidateAndLog()
+        {
+            List<string> missing = new List<string>();
+            if (MechanicalStaffCanUseWorkType == null)
+                missing.Add("ShopStaffUtility.MechanicalStaffCanUseWorkType");
+            if (CanUseRestockWorkGiver == null)
+                missing.Add("MapComponent_RestockTaskQueue.CanUseRestockWorkGiver");
+            if (MechDispatcherIsIdleForShopDispatch == null)
+                missing.Add("MapComponent_MechShopStaffDispatcher.IsIdleForShopDispatch");
+            if (MechDispatcherShouldTryDispatch == null)
+                missing.Add("MapComponent_MechShopStaffDispatcher.ShouldTryDispatch");
+
+            if (missing.Count > 0)
+            {
+                Log.Warning(LogPrefix +
+                    "Mech restock compat targets missing (affected patches disabled): " +
+                    string.Join(", ", missing));
+            }
+        }
+    }
+
     /// <summary>
     /// 让原版「只会 Hauling」的玩家机械体（如 Mech_Lifter）真正能执行框架补货。
     ///
@@ -32,6 +70,9 @@ namespace RSMFInventoryGoodsFilter.Patches
         private const string LogPrefix = "[RSMF Inventory Goods Filter][Restock] ";
         private static bool appliedLogged;
         private static bool runtimeErrorLogged;
+
+        private static bool MechRestockEnabled =>
+            InventoryGoodsFilterMod.Settings == null || InventoryGoodsFilterMod.Settings.EnableMechRestock;
 
         private static readonly HashSet<string> ExtraMechIdleJobDefNames = new HashSet<string>
         {
@@ -97,15 +138,12 @@ namespace RSMFInventoryGoodsFilter.Patches
             return false;
         }
 
-        private static void LogAppliedOnce(string detail)
+        private static void LogAppliedOnce()
         {
             if (appliedLogged)
                 return;
             appliedLogged = true;
-            if (RestockFixGate.VerboseLog)
-                Log.Message(LogPrefix + "Mech restock compat active: " + detail);
-            else
-                Log.Message(LogPrefix + "Mech restock compat active (hauling mechs can restock).");
+            Log.Message(LogPrefix + "Mech restock compat active (hauling mechs can restock).");
         }
 
         private static void LogRuntimeErrorOnce(Exception exception)
@@ -124,26 +162,21 @@ namespace RSMFInventoryGoodsFilter.Patches
         {
             private static MethodBase TargetMethod()
             {
-                return AccessTools.Method(typeof(ShopStaffUtility), "MechanicalStaffCanUseWorkType");
+                return MechRestockPatchTargets.MechanicalStaffCanUseWorkType;
             }
 
             private static bool Prepare()
             {
-                MethodBase method = TargetMethod();
-                if (method == null)
-                {
-                    Log.Warning(LogPrefix +
-                        "Mech restock compat: MechanicalStaffCanUseWorkType not found.");
+                if (MechRestockPatchTargets.MechanicalStaffCanUseWorkType == null)
                     return false;
-                }
 
-                LogAppliedOnce("MechanicalStaffCanUseWorkType + WorkTypeIsDisabled + CanUseRestockWorkGiver + mech idle");
+                LogAppliedOnce();
                 return true;
             }
 
             private static void Postfix(Pawn pawn, WorkTypeDef workType, ref bool __result)
             {
-                if (__result || !RestockFixGate.IsMasterEnabled)
+                if (__result || !MechRestockEnabled)
                     return;
                 try
                 {
@@ -166,7 +199,7 @@ namespace RSMFInventoryGoodsFilter.Patches
         {
             private static void Postfix(Pawn __instance, WorkTypeDef w, ref bool __result)
             {
-                if (!__result || !RestockFixGate.IsMasterEnabled)
+                if (!__result || !MechRestockEnabled)
                     return;
                 try
                 {
@@ -188,7 +221,7 @@ namespace RSMFInventoryGoodsFilter.Patches
         {
             private static MethodBase TargetMethod()
             {
-                return AccessTools.Method(typeof(MapComponent_RestockTaskQueue), "CanUseRestockWorkGiver");
+                return MechRestockPatchTargets.CanUseRestockWorkGiver;
             }
 
             private static bool Prepare()
@@ -198,7 +231,7 @@ namespace RSMFInventoryGoodsFilter.Patches
 
             private static void Postfix(Pawn pawn, ref bool __result)
             {
-                if (__result || !RestockFixGate.IsMasterEnabled)
+                if (__result || !MechRestockEnabled)
                     return;
                 try
                 {
@@ -226,7 +259,7 @@ namespace RSMFInventoryGoodsFilter.Patches
         {
             private static MethodBase TargetMethod()
             {
-                return AccessTools.Method(typeof(MapComponent_MechShopStaffDispatcher), "IsIdleForShopDispatch");
+                return MechRestockPatchTargets.MechDispatcherIsIdleForShopDispatch;
             }
 
             private static bool Prepare()
@@ -236,7 +269,7 @@ namespace RSMFInventoryGoodsFilter.Patches
 
             private static void Postfix(Pawn pawn, ref bool __result)
             {
-                if (__result || !RestockFixGate.IsMasterEnabled)
+                if (__result || !MechRestockEnabled)
                     return;
                 try
                 {
@@ -262,7 +295,7 @@ namespace RSMFInventoryGoodsFilter.Patches
         {
             private static MethodBase TargetMethod()
             {
-                return AccessTools.Method(typeof(MapComponent_MechShopStaffDispatcher), "ShouldTryDispatch");
+                return MechRestockPatchTargets.MechDispatcherShouldTryDispatch;
             }
 
             private static bool Prepare()
@@ -272,7 +305,7 @@ namespace RSMFInventoryGoodsFilter.Patches
 
             private static void Postfix(Pawn pawn, int now, ref bool __result)
             {
-                if (!__result || !RestockFixGate.IsMasterEnabled)
+                if (!__result || !MechRestockEnabled)
                     return;
                 try
                 {

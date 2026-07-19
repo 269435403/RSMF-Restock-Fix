@@ -11,7 +11,7 @@
   <RSMF.InventoryGoodsFilter.RefreshDone>Inventory snapshot refreshed.</RSMF.InventoryGoodsFilter.RefreshDone>
   <RSMF.InventoryGoodsFilter.Summary>Inventory {inventory} / Registered {registered}</RSMF.InventoryGoodsFilter.Summary>
   <RSMF.InventoryGoodsFilter.SummaryTip>Inventory candidate kinds / registered kinds in the current category. The summary ignores search text; candidates include map stock plus currently enabled draft items.</RSMF.InventoryGoodsFilter.SummaryTip>
-  <RSMF.InventoryGoodsFilter.SettingsCategory>RSMF Restock Fix</RSMF.InventoryGoodsFilter.SettingsCategory>
+  <RSMF.InventoryGoodsFilter.SettingsCategory>RSMF Goods Manager Plus</RSMF.InventoryGoodsFilter.SettingsCategory>
   <RSMF.InventoryGoodsFilter.Settings.LooseMode>Loose inventory recognition</RSMF.InventoryGoodsFilter.Settings.LooseMode>
   <RSMF.InventoryGoodsFilter.Settings.LooseModeTip>When enabled, counts all player-usable, non-forbidden spawned items on the current map, even outside valid storage. Still excludes other maps, unspawned carried/equipped items, and framework storage-unit virtual inventory.</RSMF.InventoryGoodsFilter.Settings.LooseModeTip>
   <RSMF.InventoryGoodsFilter.Settings.StrictModeNote>When disabled, strict mode is used: only items in valid player storage locations are counted.</RSMF.InventoryGoodsFilter.Settings.StrictModeNote>
@@ -20,63 +20,8 @@
   <RSMF.InventoryGoodsFilter.Error.MissingTargets>Required framework members could not be found: {targets}. The affected enhancements were safely disabled; the original goods manager remains available.</RSMF.InventoryGoodsFilter.Error.MissingTargets>
   <RSMF.InventoryGoodsFilter.Error.RuntimeFallback>An enhancement failed: {error}. Falling back to the framework's original behavior; this error is logged only once per run.</RSMF.InventoryGoodsFilter.Error.RuntimeFallback>
   <RSMF.InventoryGoodsFilter.Error.PatchAllFailed>Applying Harmony patches failed: {error}. Add-on enhancements were stopped; the framework's original window remains available.</RSMF.InventoryGoodsFilter.Error.PatchAllFailed>
-
-  <!-- Player settings: reliable restock -->
-  <RSMF.InventoryGoodsFilter.Settings.RestockSection>Reliable auto-restock</RSMF.InventoryGoodsFilter.Settings.RestockSection>
-  <RSMF.InventoryGoodsFilter.Settings.EnableRestockInvariantFix>Enable reliable auto-restock</RSMF.InventoryGoodsFilter.Settings.EnableRestockInvariantFix>
-  <RSMF.InventoryGoodsFilter.Settings.EnableRestockInvariantFixTip>When on, uses improved restock semantics, idempotency, save convergence, and silent background self-heal. When off, restores framework restock; inventory filtering is unaffected.</RSMF.InventoryGoodsFilter.Settings.EnableRestockInvariantFixTip>
-  <RSMF.InventoryGoodsFilter.Settings.VerboseRestockLog>Verbose restock logging</RSMF.InventoryGoodsFilter.Settings.VerboseRestockLog>
-  <RSMF.InventoryGoodsFilter.Settings.VerboseRestockLogTip>Emits restock debug logs (including self-heal summaries). Off by default to avoid spam.</RSMF.InventoryGoodsFilter.Settings.VerboseRestockLogTip>
-  <RSMF.InventoryGoodsFilter.Settings.RestockStageNote>Reliable auto-restock is on by default. Colony hauling mechs (e.g. Lifter) assigned to the shop Restocker role can restock.</RSMF.InventoryGoodsFilter.Settings.RestockStageNote>
-
-  <!-- Legacy keys kept for compatibility; sub-toggles no longer shown in settings UI -->
-  <RSMF.InventoryGoodsFilter.Settings.EnableThresholdSemanticFix>Threshold semantics</RSMF.InventoryGoodsFilter.Settings.EnableThresholdSemanticFix>
-  <RSMF.InventoryGoodsFilter.Settings.EnableThresholdSemanticFixTip>Internal layer (follows master toggle).</RSMF.InventoryGoodsFilter.Settings.EnableThresholdSemanticFixTip>
-  <RSMF.InventoryGoodsFilter.Settings.EnableReservationIdempotencyFix>Reservation idempotency</RSMF.InventoryGoodsFilter.Settings.EnableReservationIdempotencyFix>
-  <RSMF.InventoryGoodsFilter.Settings.EnableReservationIdempotencyFixTip>Internal layer (follows master toggle).</RSMF.InventoryGoodsFilter.Settings.EnableReservationIdempotencyFixTip>
-  <RSMF.InventoryGoodsFilter.Settings.EnableQueueSelfHealFix>Queue self-heal</RSMF.InventoryGoodsFilter.Settings.EnableQueueSelfHealFix>
-  <RSMF.InventoryGoodsFilter.Settings.EnableQueueSelfHealFixTip>Internal layer (follows master toggle).</RSMF.InventoryGoodsFilter.Settings.EnableQueueSelfHealFixTip>
-  <RSMF.InventoryGoodsFilter.Settings.EnableRestockUiAssist>Restock UI assist</RSMF.InventoryGoodsFilter.Settings.EnableRestockUiAssist>
-  <RSMF.InventoryGoodsFilter.Settings.EnableRestockUiAssistTip>Internal layer (follows master toggle).</RSMF.InventoryGoodsFilter.Settings.EnableRestockUiAssistTip>
-  <RSMF.InventoryGoodsFilter.Settings.EnableRestockWatchdog>Background restock self-heal</RSMF.InventoryGoodsFilter.Settings.EnableRestockWatchdog>
-  <RSMF.InventoryGoodsFilter.Settings.EnableRestockWatchdogTip>Internal layer (follows master toggle).</RSMF.InventoryGoodsFilter.Settings.EnableRestockWatchdogTip>
-
-  <RSMF.InventoryGoodsFilter.Restock.EnhancementsApplied>Reliable auto-restock is enabled.</RSMF.InventoryGoodsFilter.Restock.EnhancementsApplied>
-  <RSMF.InventoryGoodsFilter.Restock.R5WatchdogApplied>Background restock self-heal is active (silent soft wake; no popup by default).</RSMF.InventoryGoodsFilter.Restock.R5WatchdogApplied>
-  <RSMF.InventoryGoodsFilter.Restock.ProbeOk>Restock patch target probe complete: all members found.</RSMF.InventoryGoodsFilter.Restock.ProbeOk>
-  <RSMF.InventoryGoodsFilter.Restock.ProbeMissing>Restock patch targets missing (affected features will degrade safely): {targets}</RSMF.InventoryGoodsFilter.Restock.ProbeMissing>
-  <RSMF.InventoryGoodsFilter.Restock.R1Applied>Restock semantic patches applied (always-fill threshold + strict-less CountNeeded).</RSMF.InventoryGoodsFilter.Restock.R1Applied>
-  <RSMF.InventoryGoodsFilter.Restock.R2ReservationApplied>Reservation idempotency patches applied (job token + Cancel sync).</RSMF.InventoryGoodsFilter.Restock.R2ReservationApplied>
-  <RSMF.InventoryGoodsFilter.Restock.R2QueueApplied>Queue self-heal patches applied (orphan dirty + idle dispatch transaction).</RSMF.InventoryGoodsFilter.Restock.R2QueueApplied>
-  <RSMF.InventoryGoodsFilter.Restock.R3SettingsApplied>Settings converge patch applied (Reconcile + dirty after ApplySettings).</RSMF.InventoryGoodsFilter.Restock.R3SettingsApplied>
-  <RSMF.InventoryGoodsFilter.Restock.R3UiApplied>UI threshold assist patches applied (display/storage decoupled from Effective + drag follow).</RSMF.InventoryGoodsFilter.Restock.R3UiApplied>
-  <RSMF.InventoryGoodsFilter.Restock.ThresholdTip>0 = always fill to target.\nGreater than 0 = restock only when stock is below this value.\nWhen changing the target: always-fill follows automatically; custom thresholds are kept when possible.</RSMF.InventoryGoodsFilter.Restock.ThresholdTip>
-  <RSMF.InventoryGoodsFilter.Restock.DiagnosticStub>Restock diagnostic: storage {storage}.</RSMF.InventoryGoodsFilter.Restock.DiagnosticStub>
-  <RSMF.InventoryGoodsFilter.Restock.R4UiApplied>Restock status/diagnostic UI applied.</RSMF.InventoryGoodsFilter.Restock.R4UiApplied>
-  <RSMF.InventoryGoodsFilter.Restock.JobKeyFallback>Restock job loadID was 0; falling back to object-identity hash for token keys (logged once).</RSMF.InventoryGoodsFilter.Restock.JobKeyFallback>
-  <RSMF.InventoryGoodsFilter.Restock.CopyDiagnostics>Copy diagnostics</RSMF.InventoryGoodsFilter.Restock.CopyDiagnostics>
-  <RSMF.InventoryGoodsFilter.Restock.CopyDiagnosticsTip>Copy this storage unit's restock status to the clipboard for bug reports. Read-only. (Dev mode)</RSMF.InventoryGoodsFilter.Restock.CopyDiagnosticsTip>
-  <RSMF.InventoryGoodsFilter.Restock.CopyDiagnosticsDone>Restock diagnostics copied to clipboard.</RSMF.InventoryGoodsFilter.Restock.CopyDiagnosticsDone>
-  <RSMF.InventoryGoodsFilter.Restock.CopyDiagnosticsEmpty>No diagnostics to copy.</RSMF.InventoryGoodsFilter.Restock.CopyDiagnosticsEmpty>
-  <RSMF.InventoryGoodsFilter.Restock.RepairToSettings>Repair restock</RSMF.InventoryGoodsFilter.Restock.RepairToSettings>
-  <RSMF.InventoryGoodsFilter.Restock.RepairToSettingsTip>Re-sync restock scheduling to the current settings. Does not spawn items or change targets/thresholds. Not instant delivery. (Dev mode)</RSMF.InventoryGoodsFilter.Restock.RepairToSettingsTip>
-  <RSMF.InventoryGoodsFilter.Restock.RepairDone>Restock scheduling repaired (will re-dispatch; not instant delivery).</RSMF.InventoryGoodsFilter.Restock.RepairDone>
-  <RSMF.InventoryGoodsFilter.Restock.RepairFailed>Restock repair failed. Check mod settings.</RSMF.InventoryGoodsFilter.Restock.RepairFailed>
-  <RSMF.InventoryGoodsFilter.Restock.RepairDisabled>Reliable auto-restock is off; repair is disabled.</RSMF.InventoryGoodsFilter.Restock.RepairDisabled>
-  <RSMF.InventoryGoodsFilter.Restock.State.Disabled>Not listed</RSMF.InventoryGoodsFilter.Restock.State.Disabled>
-  <RSMF.InventoryGoodsFilter.Restock.State.TargetZero>Target is 0</RSMF.InventoryGoodsFilter.Restock.State.TargetZero>
-  <RSMF.InventoryGoodsFilter.Restock.State.Satisfied>Matches settings</RSMF.InventoryGoodsFilter.Restock.State.Satisfied>
-  <RSMF.InventoryGoodsFilter.Restock.State.NotTriggered>Not triggered</RSMF.InventoryGoodsFilter.Restock.State.NotTriggered>
-  <RSMF.InventoryGoodsFilter.Restock.State.InProgress>Restocking</RSMF.InventoryGoodsFilter.Restock.State.InProgress>
-  <RSMF.InventoryGoodsFilter.Restock.State.Queued>Queued</RSMF.InventoryGoodsFilter.Restock.State.Queued>
-  <RSMF.InventoryGoodsFilter.Restock.State.BlockedNoSupply>Blocked: no supply</RSMF.InventoryGoodsFilter.Restock.State.BlockedNoSupply>
-  <RSMF.InventoryGoodsFilter.Restock.State.BlockedNoStaff>Blocked: no staff</RSMF.InventoryGoodsFilter.Restock.State.BlockedNoStaff>
-  <RSMF.InventoryGoodsFilter.Restock.State.BlockedOther>Blocked</RSMF.InventoryGoodsFilter.Restock.State.BlockedOther>
-  <RSMF.InventoryGoodsFilter.Restock.State.BlockedWithReason>Blocked: {reason}</RSMF.InventoryGoodsFilter.Restock.State.BlockedWithReason>
-  <RSMF.InventoryGoodsFilter.Restock.State.Interrupted>Interrupted: repair</RSMF.InventoryGoodsFilter.Restock.State.Interrupted>
-  <RSMF.InventoryGoodsFilter.Restock.State.Unknown>Unknown</RSMF.InventoryGoodsFilter.Restock.State.Unknown>
-  <RSMF.InventoryGoodsFilter.Restock.IntentAlwaysFill>Always fill</RSMF.InventoryGoodsFilter.Restock.IntentAlwaysFill>
-  <RSMF.InventoryGoodsFilter.Restock.IntentCustom>Custom trigger</RSMF.InventoryGoodsFilter.Restock.IntentCustom>
-  <RSMF.InventoryGoodsFilter.Restock.RowStatusShort>S{S} T{T} H'{H} P{P} need{need} · {status}</RSMF.InventoryGoodsFilter.Restock.RowStatusShort>
-  <RSMF.InventoryGoodsFilter.Restock.RowStatusTip>Stock {S} / target {T}\nThreshold {rawH} (effective {H})\nPending {P} · need {need}\nStatus: {status}\nIntent: {intent}</RSMF.InventoryGoodsFilter.Restock.RowStatusTip>
+  <RSMF.GoodsManager.AutoTrimNotice>Inventory capacity trimmed {trimmed} items to fit storage limit.</RSMF.GoodsManager.AutoTrimNotice>
+  <RSMF.InventoryGoodsFilter.Settings.MechSection>Mech restock</RSMF.InventoryGoodsFilter.Settings.MechSection>
+  <RSMF.InventoryGoodsFilter.Settings.EnableMechRestock>Enable mech restock</RSMF.InventoryGoodsFilter.Settings.EnableMechRestock>
+  <RSMF.InventoryGoodsFilter.Settings.EnableMechRestockTip>When on, colony hauling mechs (e.g. Lifter) can be assigned to the shop Restocker role and actually perform restocking. Off restores the original framework behavior.</RSMF.InventoryGoodsFilter.Settings.EnableMechRestockTip>
 </LanguageData>
