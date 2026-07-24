@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
   <packageId>yyyyy.rsmf.restockfix</packageId>
-  <name>RSMF 商品管理增强 (Goods Manager Plus)</name>
+  <name>边缘模拟经营框架商品管理增强</name>
   <author>yyyyy</author>
   <supportedVersions>
     <li>1.6</li>
@@ -12,8 +12,6 @@
 - 搬运机械体（如搬运机）可加入商店补货岗位
 - 可选兼容 Adaptive Storage Framework
 - 不修改 RSMF 原文件
-
-注：自 2026-07 主模组更新起，补货修复已由框架原生实现，本模组不再包含补货修复补丁。
 
 Goods manager inventory filter + warehouse stock column for RimSimManagementFramework. Colony hauling mechs can restock when assigned to the shop Restocker role. Optional Adaptive Storage Framework support.</description>
   <modDependencies>
